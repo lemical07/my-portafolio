@@ -1,0 +1,158 @@
+/* ==========================================================
+   TABLET Y MENOR (hasta 900px)
+========================================================== */
+@media (max-width:900px){
+
+    /* Inicio en una sola columna, todo centrado */
+    .intro{
+        grid-template-columns:1fr;
+        gap:40px;
+        min-height:auto;
+    }
+
+    .intro-content{
+        text-align:center;
+    }
+
+    .intro-content p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons,
+    .meta-list{
+        justify-content:center;
+    }
+
+    .intro-image{
+        justify-content:center;
+    }
+
+    /* Sobre mí */
+    .about{
+        grid-template-columns:1fr;
+        gap:32px;
+    }
+
+    .about img{
+        max-width:420px;
+    }
+
+    /* Menú un poco más compacto */
+    .menu{
+        gap:18px;
+    }
+}
+
+
+/* ==========================================================
+   CELULAR (hasta 760px): menú hamburguesa
+========================================================== */
+@media (max-width:760px){
+        header{
+        top:10px;
+        margin-top:10px;
+        background:transparent;
+        border:0;
+        pointer-events:none;
+    }
+
+    .nav{
+        position:relative;
+        justify-content:flex-end;
+        padding:0;
+    }
+
+    .logo{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:5px;
+        width:44px;
+        height:44px;
+        padding:0 11px;
+        background:var(--surface);
+        border:var(--line);
+        border-radius:var(--radius-sm);
+        cursor:pointer;
+        pointer-events:auto;
+    }
+
+    .menu-toggle span{
+        display:block;
+        height:2px;
+        background:var(--text);
+    }
+
+    .menu{
+        display:none;
+        position:absolute;
+        top:calc(100% + 12px);
+        right:0;
+        flex-direction:column;
+        gap:0;
+        width:220px;
+        padding:6px 0;
+        background:var(--surface);
+        border:var(--line);
+        border-radius:12px;
+        pointer-events:auto;
+    }
+
+    .menu.open{
+        display:flex;
+    }
+
+    .menu::before{
+        content:"";
+        position:absolute;
+        top:-6px;
+        right:16px;
+        width:10px;
+        height:10px;
+        background:var(--surface);
+        border-top:var(--line);
+        border-left:var(--line);
+        transform:rotate(45deg);
+    }
+
+    .menu a{
+        display:block;
+        padding:11px 20px;
+        border-bottom:0;
+    }
+    .about img{
+    width:250px;
+    height:250px;
+}
+    section{
+        padding:72px 5%;
+    }
+
+    .intro{
+        padding-top:32px;
+    }
+
+    .section-title{
+        margin-bottom:32px;
+    }
+}
+
+
+/* ==========================================================
+   MOVIMIENTO REDUCIDO
+========================================================== */
+@media (prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *{
+        transition:none !important;
+    }
+}

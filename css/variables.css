@@ -1,0 +1,24 @@
+/* ===================
+   VCOLORES
+====================== */
+:root{
+    --bg:#0a1628;
+    --surface:#0f2038;
+    --border:#1f3a5c;
+    --text:#e8f1fb;
+    --muted:#8ba3c0;
+    --accent:#38bdf8;
+    --accent-hover:#7dd3fc;
+    --on-accent:#061224;
+}
+
+/* ===================
+   VARIABLES COMUNES
+====================== */
+:root{
+    --radius:50%;
+    --radius-sm:8px;
+    --line:1px solid var(--border);
+    --max:1200px;
+    --font:'IBM Plex Sans','Segoe UI',system-ui,-apple-system,sans-serif;
+}

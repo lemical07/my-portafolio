@@ -1,155 +1,330 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
+    <title>Selvin Eladio Lem Ical | Técnico en Desarrollo de Software</title>
+    <meta name="description" content="Portafolio de Selvin Eladio Lem Ical, Técnico en Desarrollo de Software con enfoque backend: APIs con Node.js y Strapi, y automatización con n8n.">
     <link rel="icon" type="image/png" href="./img/favicon.png" sizes="32x32">
-    <link rel="stylesheet" href="./css/style.css">
 
+    <!-- Fuente IBM Plex Sans (la usa la variable --font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/responsive.css">
 </head>
 <body>
+
     <header>
         <nav class="nav">
-            <div class="logo"> 
-                <img src="./img/logo.png" alt="logo">
+            <div class="logo">
+                <img src="./img/logo.png" alt="Logo">
             </div>
-            <ul class="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about_me">About me</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+
+            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="menu" id="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#trayectoria">Trayectoria</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="intro" id="home">
-        <div class="intro-content">
-            <h1>Hello, I'm <span class="highlight">Selvin Eladio Lem Ical</span></h1>
-            <h2>Full Stack Web Developer</h2>
-            <p>I create modern, fast, and stylish digital experiences. Passionate about clean code and impactful design.</p>
-            <a href="#contact"><button class="btn">TALK TO ME</button></a>
-        </div>
-        <div class="intro-image">
-            <img src="./img/lemical.png" alt="Foto de Lem Ical">
-        </div>
-    </section>
+    <main>
 
-    <section id="about_me">
-        <h2 class="section-title">About me</h2>
-        <div class="about">
-            <img src="./img/code.png" alt="code mockup">
-            <div>
-                <h3>Full Stack Web Developer</h3>
-                <p>Full Stack Web Developer with a passion for transforming complex ideas into high-impact digital products. Currently, I am focusing my efforts on mastering HTML5 and CSS3, complemented by developing advanced logic in Python.
-                    My primary goal is to design digital experiences where visual aesthetics and functional efficiency converge perfectly.
-                </p>
+        <!-- ================= INICIO ================= -->
+        <section class="intro" id="inicio">
+            <div class="intro-content">
+                <h1>Hola, soy <span class="highlight">Selvin Eladio Lem Ical</span></h1>
+                <h2>Técnico en Desarrollo de Software</h2>
+                <p>Backend Jr. enfocado en APIs con Node.js y Strapi, y en automatización con n8n. Colaboro en un proyecto real de actualización de plataforma y curso el programa de Desarrollador FullStack en Campuslands.</p>
+                <div class="hero-buttons">
+                    <a class="btn" href="#proyectos">Ver proyectos</a>
+                    <!-- PLACEHOLDER: ruta del PDF del CV -->
+                    <a class="btn btn-outline" href="./docs/cv-selvin-eladio-lem-ical.pdf" download="CV-Selvin-Eladio-Lem-Ical.pdf">Descargar CV</a>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section id="skills">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills">
-            <div class="skill">
-                <span>Teamwork</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 95%"></div>
-                </div>
+            <div class="intro-image">
+                <img src="./img/perfil.jpg" alt="Foto de Selvin Eladio Lem Ical">
             </div>
-            <div class="skill">
-                <span>Customer service</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 95%"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>Autonomous Learning</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 95%"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>HTML5</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 95%"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>CSS</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 96%"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>Github</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 95%"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>n8n</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 90%"></div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="projects">
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="./img/bot.png" alt="TutorBot">
-                <div class="project-info">
-                    <h3>TutorBot</h3>
-                    <p>Automation of tutorial scheduling</p>
-                    <a href="https://github.com/canuxantonio502/automatizacion_tutorbot_n8n.git" target="_blank"> 
-                        <button class="button">View project</button>
+            <ul class="meta-list">
+                <li>Guatemala</li>
+                <li>Remoto o híbrido</li>
+                <li>Busco mi primera oportunidad como desarrollador junior</li>
+            </ul>
+        </section>
+
+        <!-- ================= SOBRE MÍ ================= -->
+        <section id="sobre-mi">
+            <h2 class="section-title">Sobre mí</h2>
+            <div class="about">
+                <img src="./img/Designer.png" alt="Ilustración de código en pantalla">
+                <div>
+                    <h3>Técnico en Desarrollo de Software</h3>
+                    <p>Soy técnico en desarrollo de software con formación previa en Electrónica Industrial. Actualmente curso el programa de Desarrollador FullStack en Campuslands y colaboro en un proyecto real construyendo y probando APIs con Strapi.</p>
+                    <p>Aprendo ejecutando, depurando y resolviendo con autonomía; cuando el problema lo requiere, investigo y trabajo en equipo.</p>
+
+                    <h4>Cómo trabajo</h4>
+                    <ul class="work-list">
+                        <li>Analizo los requerimientos antes de programar.</li>
+                        <li>Organizo mis proyectos con una estructura clara y documento su instalación.</li>
+                        <li>Uso Git con ramas y commits descriptivos.</li>
+                        <li>Pruebo mis cambios antes de entregarlos.</li>
+                        <li>Planteo los errores abiertamente y busco la solución en conjunto.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROYECTOS ================= -->
+        <section id="proyectos">
+            <h2 class="section-title">Proyectos</h2>
+            <div class="projects-grid">
+
+                <article class="project-card">
+                    <img src="./img/oms.jpg" alt="Vista del proyecto TutorBot">
+                    <div class="project-info">
+                        <h3>Actualización de plataforma OMS</h3>
+                        <p>Colaboración en un proyecto real de actualización de plataforma. Construcción de APIs con Strapi 5 y pruebas CRUD completas en Postman (login, schema, create, read, update, delete). Resolví un bloqueo de entorno migrando la ejecución de Docker a Node.js local, lo que permitió al equipo continuar con las pruebas.</p>
+                        <ul class="tags">
+                            <li>Strapi 5</li>
+                            <li>Node.js</li>
+                            <li>Postman</li>
+                            <li>Docker</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img src="./img/bot.png" alt="Vista del proyecto TutorBot">
+                    <div class="project-info">
+                        <h3>TutorBot</h3>
+                        <p>Chatbot en Telegram que asigna tutorías, valida la identidad del estudiante y notifica automáticamente al maestro y a la materia correspondiente.</p>
+                        <ul class="tags">
+                            <li>n8n</li>
+                            <li>IA de Google</li>
+                            <li>Google Sheets</li>
+                            <li>Telegram</li>
+                        </ul>
+                        <a class="button" href="https://github.com/canuxantonio502/automatizacion_tutorbot_n8n.git" target="_blank" rel="noopener">Ver repositorio</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img src="./img/parking.png" alt="Vista del proyecto Gestión de Parque Vehicular">
+                    <div class="project-info">
+                        <h3>Gestión de Parque Vehicular</h3>
+                        <p>Sistema de control de estacionamiento para 4 tipos de vehículo (moto, carro, bus y camión), con selección de espacio por cliente.</p>
+                        <ul class="tags">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                        <a class="button" href="https://github.com/lemical07/sistema-gestion-parqueo.git" target="_blank" rel="noopener">Ver repositorio</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img src="./img/store.png" alt="Vista del proyecto Tienda en línea">
+                    <div class="project-info">
+                        <h3>Tienda en línea</h3>
+                        <p>Diseño y maquetación de una tienda en línea.</p>
+                        <ul class="tags">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                        <a class="button" href="https://github.com/lemical07/maquetacion-tienda-online.git" target="_blank" rel="noopener">Ver repositorio</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================= HABILIDADES ================= -->
+        <section id="habilidades">
+            <h2 class="section-title">Habilidades</h2>
+
+            <div class="skills-block">
+                <h3 class="skills-title">Técnicas</h3>
+                <div class="skill-groups">
+                    <div class="skill-group">
+                        <h4>Backend</h4>
+                        <ul class="tags">
+                            <li>Node.js</li>
+                            <li>Strapi (Headless CMS)</li>
+                            <li>APIs</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Frontend</h4>
+                        <ul class="tags">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Herramientas</h4>
+                        <ul class="tags">
+                            <li>Postman</li>
+                            <li>Git</li>
+                            <li>GitHub</li>
+                            <li>Docker (básico)</li>
+                            <li>VS Code</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Automatización</h4>
+                        <ul class="tags">
+                            <li>n8n</li>
+                            <li>Telegram</li>
+                            <li>Google Sheets</li>
+                            <li>IA de Google</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Electrónica</h4>
+                        <ul class="tags">
+                            <li>Arduino</li>
+                            <li>HC-SR04</li>
+                            <li>DHT22</li>
+                            <li>HC-SR501</li>
+                            <li>LDR</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>En formación</h4>
+                        <ul class="tags">
+                            <li>Python</li>
+                            <li>MySQL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-block">
+                <h3 class="skills-title">Blandas</h3>
+                <div class="skills">
+                    <div class="skill">
+                        <strong>Comunicación directa</strong>
+                        <p>Ante errores de equipo, los planteo abiertamente y busco la solución en conjunto.</p>
+                    </div>
+                    <div class="skill">
+                        <strong>Iniciativa</strong>
+                        <p>Propongo alternativas aun sin certeza total, en lugar de esperar instrucciones.</p>
+                    </div>
+                    <div class="skill">
+                        <strong>Enseñanza y adaptabilidad</strong>
+                        <p>Busco distintas formas de explicar hasta que la otra persona entiende.</p>
+                    </div>
+                    <div class="skill">
+                        <strong>Apertura a la retroalimentación</strong>
+                        <p>Tomo la crítica técnica como una oportunidad de mejora inmediata.</p>
+                    </div>
+                    <div class="skill">
+                        <strong>Gestión bajo presión</strong>
+                        <p>Priorizo lo urgente para cumplir con varias responsabilidades a la vez.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TRAYECTORIA ================= -->
+        <section id="trayectoria">
+            <h2 class="section-title">Trayectoria</h2>
+            <ol class="timeline">
+                <li>
+                    <time>2026 – presente</time>
+                    <h3>Colaborador de Desarrollo, proyecto OMS</h3>
+                    <p>Construcción de APIs con Strapi 5 y pruebas CRUD completas en Postman dentro de un proyecto de actualización de plataforma.</p>
+                </li>
+                <li>
+                    <time>2026 – presente</time>
+                    <h3>Desarrollador FullStack, Campuslands</h3>
+                    <p>Programa de formación en desarrollo FullStack.</p>
+                </li>
+                <li>
+                    <time>2024 – 2025</time>
+                    <h3>Bachillerato en Ciencias y Letras, orientación en Electrónica Industrial</h3>
+                    <p>Escuela Experimental con Orientación Ocupacional "Villa de los Niños", zona 6. Graduado con honores y medalla de oro al mejor promedio de la carrera.</p>
+                </li>
+                <li>
+                    <time>Educación complementaria</time>
+                    <h3>Certificaciones INTECAP y Diplomado DIGEEX</h3>
+                    <p>Electricidad Industrial, Soldadura Industrial, Mecánica Automotriz y Carpintería.</p>
+                </li>
+            </ol>
+
+            <div class="languages">
+                <h3>Idiomas</h3>
+                <ul>
+                    <li>Pocomchí <span>Materno</span></li>
+                    <li>Inglés <span>Básico</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ================= CONTACTO ================= -->
+        <section id="contacto">
+            <h2 class="section-title">Contacto</h2>
+            <ul class="contact-list">
+
+                <li>
+                    <a class="contact-item" href="https://wa.me/50259369448" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span><span class="contact-label">Teléfono</span><span class="contact-value">+502 5936 9448</span></span>
                     </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <img src="./img/store.png" alt="Project #2">
-                <div class="project-info">
-                    <h3>Online Store</h3>
-                    <p>Design and layout of an online store.</p>
-                    <a href="https://github.com/lemical07/maquetacion-tienda-online.git" target="_blank"> 
-                        <button class="button">View project</button>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <img src="./img/parking.png" alt="Project #3">
-                <div class="project-info">
-                    <h3>Parking Management</h3>
-                    <p>Dynamic parking space management.</p>
-                    <a href="https://github.com/lemical07/sistema-gestion-parqueo.git" target="_blank">
-                        <button class="button">View project</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                </li>
 
+                <li>
+                    <a class="contact-item" href="mailto:icaleladio07@gmail.com">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span><span class="contact-label">Correo</span><span class="contact-value">icaleladio07@gmail.com</span></span>
+                    </a>
+                </li>
 
-    <section id="contact">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-list">
-            <h3>Tel: <a href="https://wa.me/59369448" target="_blank"><strong>59369448</strong></a></h3>
-            <h3>E-mail: <a href="mailto:icaleladio07@gmail.com"><strong>icaleladio07@gmail.com</strong></a></h3>
-            <a href="https://github.com/lemical07" target="_blank">
-                <img src="./IMG/git.png" alt="GitHub" class="contact-icon">
-            </a>
-        </div>
-    </section>
+                <li>
+                    <a class="contact-item" href="https://github.com/lemical07" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        <span><span class="contact-label">GitHub</span><span class="contact-value">github.com/lemical07</span></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="contact-item" href="https://www.linkedin.com/in/selvin-lem-764078425/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        <span><span class="contact-label">LinkedIn</span><span class="contact-value">Selvin Lem</span></span>
+                    </a>
+                </li>
+
+                <li>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span><span class="contact-label">Discord</span><span class="contact-value">ikl_13s</span></span>
+                    </div>
+                </li>
+
+            </ul>
+        </section>
+
+    </main>
 
     <footer>
         <p><strong>Selvin Eladio Lem Ical</strong> © 2026</p>
-        <p>··Building the future with code and passion··</p>
     </footer>
+    <script src="./js/index.js"></script>
+
 </body>
 </html>
