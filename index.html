@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selvin Eladio Lem Ical | Desarrollador Backend Jr.</title>
-    <meta name="description" content="Portafolio de Selvin Eladio Lem Ical, Técnico en Desarrollo de Software con enfoque backend: APIs con Node.js y Strapi, y automatización con n8n.">
+    <title>Selvin Eladio Lem Ical | Técnico en Desarrollo de Software</title>
+    <meta name="description" content="Portafolio de Selvin Eladio Lem Ical, Técnico en Desarrollo de Software con enfoque backend: APIs con Node.js, Redis y WebSocket, y automatización con n8n.">
     <link rel="icon" type="image/png" href="./img/favicon.png" sizes="32x32">
+
+    <!-- Aplica el tema guardado (o el del sistema) antes de pintar la página, para evitar parpadeo -->
+    <script>
+        (function () {
+            var theme = 'dark';
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    theme = saved;
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    theme = 'light';
+                }
+            } catch (e) {}
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 
     <!-- Fuente IBM Plex Sans (la usa la variable --font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,19 +40,30 @@
                 <img src="./img/logo.png" alt="Logo">
             </div>
 
-            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="menu" id="menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#trayectoria">Trayectoria</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="menu" id="menu">
+                    <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
+                    <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
+                    <li><a href="#experiencia" data-i18n="nav.exp">Experiencia</a></li>
+                    <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+                    <li><a href="#habilidades" data-i18n="nav.skills">Habilidades</a></li>
+                    <li><a href="#educacion" data-i18n="nav.edu">Educación</a></li>
+                    <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+                </ul>
+
+                <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Cambiar a inglés">EN</button>
+
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a modo claro" aria-pressed="false">
+                    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+
+                <button class="menu-toggle" type="button" aria-label="Abrir menú" data-i18n-attr="aria-label:a.menu" aria-expanded="false" aria-controls="menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -45,105 +72,137 @@
         <!-- ================= INICIO ================= -->
         <section class="intro" id="inicio">
             <div class="intro-content">
-                <h1>Hola, soy <span class="highlight">Selvin Eladio Lem Ical</span></h1>
-                <h2>Desarrollador Backend Jr.</h2>
-                <p>Backend Jr. enfocado en APIs con Node.js y Strapi, y en automatización con n8n. Colaboro en un proyecto real de actualización de plataforma y curso el programa de Desarrollador FullStack en Campuslands.</p>
+                <h1><bdi data-i18n="hero.hi">Hola, soy</bdi> <span class="highlight">Selvin Eladio Lem Ical</span></h1>
+                <h2 data-i18n="hero.role">Técnico en Desarrollo de Software</h2>
+                <p data-i18n="hero.p">Desarrollo aplicaciones web y APIs con JavaScript, Node.js y bases de datos, con enfoque en backend. Actualmente trabajo en el backend de un sistema de gestión de órdenes (OMS) en SoftPlus GT y colaboro en ALBA, una app móvil de salud, mientras estudio en Campuslands.</p>
                 <div class="hero-buttons">
-                    <a class="btn" href="#proyectos">Ver proyectos</a>
-                    <!-- PLACEHOLDER: ruta del PDF del CV -->
-                    <a class="btn btn-outline" href="./docs/cv-selvin-eladio-lem-ical.pdf" download="CV-Selvin-Eladio-Lem-Ical.pdf">Descargar CV</a>
+                    <a class="btn" href="#proyectos" data-i18n="hero.btn">Ver proyectos</a>
+                    <button class="btn btn-outline" id="cv-open" type="button" aria-haspopup="dialog" aria-controls="cv-modal" data-i18n="cv.open">Ver CV</button>
                 </div>
             </div>
 
             <div class="intro-image">
-                <img src="./img/perfil.jpg" alt="Foto de Selvin Eladio Lem Ical">
+                <img src="./img/perfil.jpg" alt="Foto de Selvin Eladio Lem Ical" data-i18n-attr="alt:a.photo">
             </div>
 
             <ul class="meta-list">
-                <li>Abierto a oportunidades profesionales en modalidad remota o híbrida.</li>
+                <li data-i18n="hero.loc">Zona 6, Guatemala</li>
+                <li data-i18n="hero.open">Abierto a oportunidades profesionales en modalidad remota o híbrida.</li>
             </ul>
         </section>
 
         <!-- ================= SOBRE MÍ ================= -->
         <section id="sobre-mi">
-            <h2 class="section-title">Sobre mí</h2>
+            <h2 class="section-title" data-i18n="nav.about">Sobre mí</h2>
             <div class="about">
-                <img src="./img/Designer.png" alt="Ilustración de código en pantalla">
+                <img src="./img/Designer.png" alt="Ilustración de código en pantalla" data-i18n-attr="alt:a.illus">
                 <div>
-                    <h3>Desarrollador Backend Jr.</h3>
-                    <p>Soy un Desarrollador Backend Jr. con formación previa en Electrónica Industrial. Actualmente curso el programa de Desarrollador FullStack en Campuslands y colaboro en un proyecto real construyendo y probando APIs con Strapi.</p>
-                    <p>Aprendo ejecutando, depurando y resolviendo con autonomía; cuando el problema lo requiere, investigo y trabajo en equipo.</p>
+                    <h3 data-i18n="hero.role">Técnico en Desarrollo de Software</h3>
+                    <p data-i18n="about.p1">Soy un joven apasionado por diseñar páginas web minimalistas y elegantes, cuidando que cada color, tipografía y detalle se combine con la temática del proyecto. Desarrollo aplicaciones web y APIs con JavaScript, Node.js y bases de datos.</p>
+                    <p data-i18n="about.p2">Disfruto descubrir nuevas tecnologías a través de la práctica, la experimentación y la mejora continua. Fuera de la tecnología, me atrae la naturaleza y explorar lugares donde aún queda mucho por descubrir. Me guían la lealtad, el respeto y la humildad. No me rindo fácilmente: persigo mis metas con constancia y dedicación.</p>
 
-                    <h4>Cómo trabajo</h4>
+                    <h4 data-i18n="about.how">Cómo trabajo</h4>
                     <ul class="work-list">
-                        <li>Analizo los requerimientos antes de programar.</li>
-                        <li>Organizo mis proyectos con una estructura clara y documento su instalación.</li>
-                        <li>Uso Git con ramas y commits descriptivos.</li>
-                        <li>Pruebo mis cambios antes de entregarlos.</li>
-                        <li>Planteo los errores abiertamente y busco la solución en conjunto.</li>
+                        <li data-i18n="about.l1">Analizo los requerimientos antes de programar.</li>
+                        <li data-i18n="about.l2">Organizo mis proyectos con una estructura clara y documento su instalación y sus pruebas.</li>
+                        <li data-i18n="about.l3">Uso Git con ramas y commits descriptivos.</li>
+                        <li data-i18n="about.l4">Pruebo mis cambios antes de entregarlos.</li>
+                        <li data-i18n="about.l5">Planteo los errores abiertamente y busco la solución en conjunto.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <!-- ================= EXPERIENCIA ================= -->
+        <section id="experiencia">
+            <h2 class="section-title" data-i18n="nav.exp">Experiencia</h2>
+            <div class="experience-list">
+
+                <article class="experience-card">
+                    <div class="experience-meta">
+                        <strong>SoftPlus GT</strong>
+                        <span data-i18n="exp.dates">2026 – en desarrollo</span>
+                    </div>
+                    <div class="experience-body">
+                        <h3 data-i18n="exp.oms.h">OMS Backend: sistema de gestión de órdenes</h3>
+                        <p class="experience-role" data-i18n="exp.oms.role">Desarrollador Backend</p>
+                        <p data-i18n="exp.oms.p">Desarrollo del backend y la API de un sistema de gestión de órdenes, con una implementación a la medida sobre una base de datos normalizada. Implementé validaciones y un manejo centralizado de errores con Node.js, Redis y WebSocket para funcionalidades en tiempo real. También configuré el entorno de trabajo, realicé el despliegue con Docker y documenté las pruebas de cada servicio, con testing a la medida de cada API.</p>
+                        <ul class="tags">
+                            <li>Node.js</li>
+                            <li>Redis</li>
+                            <li>WebSocket</li>
+                            <li>Docker</li>
+                            <li>APIs</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="experience-card">
+                    <div class="experience-meta">
+                        <strong>Campuslands GT</strong>
+                        <span data-i18n="exp.dates">2026 – en desarrollo</span>
+                    </div>
+                    <div class="experience-body">
+                        <h3 data-i18n="exp.alba.h">ALBA: aplicación de salud y adherencia farmacológica</h3>
+                        <p class="experience-role" data-i18n="exp.alba.role">Desarrollador de Software · Dev 7</p>
+                        <p data-i18n="exp.alba.p">Colaboro en ALBA, una aplicación móvil de salud y adherencia farmacológica para adultos mayores, cuidadores y personal médico, como parte de un equipo de 10 desarrolladores. Participo en el módulo del cuidador, QR y botiquín: configuración de alertas, notificaciones push con Firebase Cloud Messaging (FCM), carga de imágenes de medicamentos a Firebase Storage y seguimiento de la adherencia al tratamiento. También contribuyo a funcionalidades que mejoran el monitoreo y la atención de los adultos mayores.</p>
+                        <ul class="tags">
+                            <li>Firebase Cloud Messaging</li>
+                            <li>Firebase Storage</li>
+                            <li data-i18n="tag.push">Notificaciones push</li>
+                            <li data-i18n="skill.team">Trabajo en equipo</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
         <!-- ================= PROYECTOS ================= -->
         <section id="proyectos">
-            <h2 class="section-title">Proyectos</h2>
+            <h2 class="section-title" data-i18n="proj.title">Proyectos académicos</h2>
+            <p class="section-note" data-i18n="proj.note">Proyectos realizados durante mi formación en Campuslands.</p>
             <div class="projects-grid">
 
                 <article class="project-card">
-                    <img src="./img/oms.jpg" alt="Vista del proyecto TutorBot">
-                    <div class="project-info">
-                        <h3>Actualización de plataforma OMS</h3>
-                        <p>Colaboración en un proyecto real de actualización de plataforma. Construcción de APIs con Strapi 5 y pruebas CRUD completas en Postman (login, schema, create, read, update, delete). Resolví un bloqueo de entorno migrando la ejecución de Docker a Node.js local, lo que permitió al equipo continuar con las pruebas.</p>
-                        <ul class="tags">
-                            <li>Strapi 5</li>
-                            <li>Node.js</li>
-                            <li>Postman</li>
-                            <li>Docker</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="./img/bot.png" alt="Vista del proyecto TutorBot">
+                    <img src="./img/bot.png" alt="Vista del proyecto TutorBot" data-i18n-attr="alt:a.bot">
                     <div class="project-info">
                         <h3>TutorBot</h3>
-                        <p>Chatbot en Telegram que asigna tutorías, valida la identidad del estudiante y notifica automáticamente al maestro y a la materia correspondiente.</p>
+                        <p data-i18n="proj.bot.p">Automatización de un chatbot de tutorías en Telegram: flujo conversacional que asigna tutorías, valida la identidad del estudiante y notifica automáticamente al maestro y a la materia correspondiente.</p>
                         <ul class="tags">
                             <li>n8n</li>
-                            <li>IA de Google</li>
+                            <li data-i18n="tag.gai">IA de Google</li>
                             <li>Google Sheets</li>
                             <li>Telegram</li>
                         </ul>
-                        <a class="button" href="https://github.com/canuxantonio502/automatizacion_tutorbot_n8n.git" target="_blank" rel="noopener">Ver repositorio</a>
+                        <a class="button" href="https://github.com/canuxantonio502/automatizacion_tutorbot_n8n.git" target="_blank" rel="noopener" data-i18n="proj.repo">Ver repositorio</a>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <img src="./img/parking.png" alt="Vista del proyecto Gestión de Parque Vehicular">
+                    <img src="./img/parking.png" alt="Vista del proyecto Gestión de Parque Vehicular" data-i18n-attr="alt:a.park">
                     <div class="project-info">
-                        <h3>Gestión de Parque Vehicular</h3>
-                        <p>Sistema de control de estacionamiento para 4 tipos de vehículo (moto, carro, bus y camión), con selección de espacio por cliente.</p>
+                        <h3 data-i18n="proj.park.h">Gestión de Parque Vehicular</h3>
+                        <p data-i18n="proj.park.p">Sistema de control de estacionamiento para 4 tipos de vehículo (moto, carro, bus y camión), con selección de espacio por cliente.</p>
                         <ul class="tags">
                             <li>HTML</li>
                             <li>CSS</li>
                             <li>JavaScript</li>
                         </ul>
-                        <a class="button" href="https://github.com/lemical07/sistema-gestion-parqueo.git" target="_blank" rel="noopener">Ver repositorio</a>
+                        <a class="button" href="https://github.com/lemical07/sistema-gestion-parqueo.git" target="_blank" rel="noopener" data-i18n="proj.repo">Ver repositorio</a>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <img src="./img/store.png" alt="Vista del proyecto Tienda en línea">
+                    <img src="./img/store.png" alt="Vista del proyecto Tienda en línea" data-i18n-attr="alt:a.store">
                     <div class="project-info">
-                        <h3>Tienda en línea</h3>
-                        <p>Diseño y maquetación de una tienda en línea.</p>
+                        <h3 data-i18n="proj.store.h">Tienda en línea</h3>
+                        <p data-i18n="proj.store.p">Diseño y maquetación de una tienda en línea.</p>
                         <ul class="tags">
                             <li>HTML</li>
                             <li>CSS</li>
                         </ul>
-                        <a class="button" href="https://github.com/lemical07/maquetacion-tienda-online.git" target="_blank" rel="noopener">Ver repositorio</a>
+                        <a class="button" href="https://github.com/lemical07/maquetacion-tienda-online.git" target="_blank" rel="noopener" data-i18n="proj.repo">Ver repositorio</a>
                     </div>
                 </article>
 
@@ -152,19 +211,11 @@
 
         <!-- ================= HABILIDADES ================= -->
         <section id="habilidades">
-            <h2 class="section-title">Habilidades</h2>
+            <h2 class="section-title" data-i18n="nav.skills">Habilidades</h2>
 
             <div class="skills-block">
-                <h3 class="skills-title">Técnicas</h3>
+                <h3 class="skills-title" data-i18n="sk.tech">Técnicas</h3>
                 <div class="skill-groups">
-                    <div class="skill-group">
-                        <h4>Backend</h4>
-                        <ul class="tags">
-                            <li>Node.js</li>
-                            <li>Strapi (Headless CMS)</li>
-                            <li>APIs</li>
-                        </ul>
-                    </div>
                     <div class="skill-group">
                         <h4>Frontend</h4>
                         <ul class="tags">
@@ -174,26 +225,50 @@
                         </ul>
                     </div>
                     <div class="skill-group">
-                        <h4>Herramientas</h4>
+                        <h4>Backend</h4>
+                        <ul class="tags">
+                            <li>Node.js</li>
+                            <li>Express</li>
+                            <li>Strapi 5</li>
+                            <li>WebSocket</li>
+                            <li>APIs</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4 data-i18n="sk.db">Bases de datos</h4>
+                        <ul class="tags">
+                            <li>MySQL</li>
+                            <li>Redis</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4 data-i18n="sk.tools">Herramientas</h4>
                         <ul class="tags">
                             <li>Postman</li>
                             <li>Git</li>
                             <li>GitHub</li>
-                            <li>Docker (básico)</li>
+                            <li data-i18n="tag.docker">Docker (básico)</li>
                             <li>VS Code</li>
                         </ul>
                     </div>
                     <div class="skill-group">
-                        <h4>Automatización</h4>
+                        <h4 data-i18n="sk.cloud">Servicios en la nube</h4>
+                        <ul class="tags">
+                            <li>Firebase Cloud Messaging</li>
+                            <li>Firebase Storage</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4 data-i18n="sk.auto">Automatización</h4>
                         <ul class="tags">
                             <li>n8n</li>
                             <li>Telegram</li>
                             <li>Google Sheets</li>
-                            <li>IA de Google</li>
+                            <li data-i18n="tag.gai">IA de Google</li>
                         </ul>
                     </div>
                     <div class="skill-group">
-                        <h4>Electrónica</h4>
+                        <h4 data-i18n="sk.elec">Electrónica</h4>
                         <ul class="tags">
                             <li>Arduino</li>
                             <li>HC-SR04</li>
@@ -203,93 +278,95 @@
                         </ul>
                     </div>
                     <div class="skill-group">
-                        <h4>En formación</h4>
+                        <h4 data-i18n="sk.learn">En formación</h4>
                         <ul class="tags">
                             <li>Python</li>
-                            <li>MySQL</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="skills-block">
-                <h3 class="skills-title">Blandas</h3>
+                <h3 class="skills-title" data-i18n="sk.soft">Blandas</h3>
                 <div class="skills">
                     <div class="skill">
-                        <strong>Comunicación directa</strong>
-                        <p>Ante errores de equipo, los planteo abiertamente y busco la solución en conjunto.</p>
+                        <strong data-i18n="soft.1">Comunicación clara y directa</strong>
+                        <p data-i18n="soft.1d">Expreso mis ideas con claridad y respeto.</p>
                     </div>
                     <div class="skill">
-                        <strong>Iniciativa</strong>
-                        <p>Propongo alternativas aun sin certeza total, en lugar de esperar instrucciones.</p>
+                        <strong data-i18n="soft.2">Perseverancia</strong>
+                        <p data-i18n="soft.2d">No me rindo ante los retos; cumplo mis metas con constancia.</p>
                     </div>
                     <div class="skill">
-                        <strong>Enseñanza y adaptabilidad</strong>
-                        <p>Busco distintas formas de explicar hasta que la otra persona entiende.</p>
+                        <strong data-i18n="soft.3">Adaptabilidad</strong>
+                        <p data-i18n="soft.3d">Me adapto con facilidad a entornos, herramientas y proyectos nuevos.</p>
                     </div>
                     <div class="skill">
-                        <strong>Apertura a la retroalimentación</strong>
-                        <p>Tomo la crítica técnica como una oportunidad de mejora inmediata.</p>
+                        <strong data-i18n="soft.4">Aprendizaje continuo</strong>
+                        <p data-i18n="soft.4d">Aprendo probando, construyendo y mejorando, y disfruto incorporar tecnologías nuevas.</p>
                     </div>
                     <div class="skill">
-                        <strong>Gestión bajo presión</strong>
-                        <p>Priorizo lo urgente para cumplir con varias responsabilidades a la vez.</p>
+                        <strong data-i18n="soft.5">Sentido del diseño</strong>
+                        <p data-i18n="soft.5d">Cuido los detalles y priorizo interfaces minimalistas, elegantes y coherentes.</p>
+                    </div>
+                    <div class="skill">
+                        <strong data-i18n="skill.team">Trabajo en equipo</strong>
+                        <p data-i18n="soft.6d">Colaboro con respeto y lealtad, y celebro los logros de mis compañeros.</p>
+                    </div>
+                    <div class="skill">
+                        <strong data-i18n="soft.7">Gestión bajo presión</strong>
+                        <p data-i18n="soft.7d">Mantengo la calma y la concentración cuando aumenta la exigencia.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= TRAYECTORIA ================= -->
-        <section id="trayectoria">
-            <h2 class="section-title">Trayectoria</h2>
+        <!-- ================= EDUCACIÓN ================= -->
+        <section id="educacion">
+            <h2 class="section-title" data-i18n="nav.edu">Educación</h2>
             <ol class="timeline">
                 <li>
-                    <time>2026 – presente</time>
-                    <h3>Colaborador de Desarrollo, proyecto OMS</h3>
-                    <p>Construcción de APIs con Strapi 5 y pruebas CRUD completas en Postman dentro de un proyecto de actualización de plataforma.</p>
-                </li>
-                <li>
-                    <time>2026 – presente</time>
-                    <h3>Desarrollador FullStack, Campuslands</h3>
-                    <p>Programa de formación en desarrollo FullStack.</p>
+                    <time data-i18n="edu.present">2026 – presente</time>
+                    <h3 data-i18n="edu.1.h">Técnico en Desarrollo de Software, Campuslands GT</h3>
+                    <p data-i18n="edu.1.p">Formación en desarrollo de software: frontend, backend, APIs y proyectos reales.</p>
                 </li>
                 <li>
                     <time>2024 – 2025</time>
-                    <h3>Bachillerato en Ciencias y Letras, orientación en Electrónica Industrial</h3>
-                    <p>Escuela Experimental con Orientación Ocupacional "Villa de los Niños", zona 6. Graduado con honores y medalla de oro al mejor promedio de la carrera.</p>
+                    <h3 data-i18n="edu.2.h">Bachillerato en Ciencias y Letras, orientación en Electrónica Industrial</h3>
+                    <p data-i18n="edu.2.p">Escuela Experimental con Orientación Ocupacional "Villa de los Niños", zona 6. Graduado con honores y medalla de oro al mejor promedio de la carrera.</p>
                 </li>
                 <li>
-                    <time>Educación complementaria</time>
-                    <h3>Certificaciones INTECAP y Diplomado DIGEEX</h3>
-                    <p>Electricidad Industrial, Soldadura Industrial, Mecánica Automotriz y Carpintería.</p>
+                    <time data-i18n="edu.3.t">Educación complementaria</time>
+                    <h3 data-i18n="edu.3.h">Certificaciones INTECAP y Diplomado DIGEEX</h3>
+                    <p data-i18n="edu.3.p">Electricidad Industrial, Soldadura Industrial, Mecánica Automotriz y Carpintería.</p>
                 </li>
             </ol>
 
             <div class="languages">
-                <h3>Idiomas</h3>
+                <h3 data-i18n="lang.title">Idiomas</h3>
                 <ul>
-                    <li>Pocomchí <span>Materno</span></li>
-                    <li>Inglés <span>Básico</span></li>
+                    <li>Pocomchí <span data-i18n="lang.native" data-i18n="lang.native">Materno</span></li>
+                    <li><bdi data-i18n="lang.en" data-i18n="lang.en">Inglés</bdi> <span data-i18n="lang.inter" data-i18n="lang.inter">Intermedio</span></li>
                 </ul>
             </div>
         </section>
 
         <!-- ================= CONTACTO ================= -->
         <section id="contacto">
-            <h2 class="section-title">Contacto</h2>
+            <h2 class="section-title" data-i18n="nav.contact">Contacto</h2>
             <ul class="contact-list">
 
                 <li>
                     <a class="contact-item" href="https://wa.me/50259369448" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <span><span class="contact-label">Teléfono</span><span class="contact-value">+502 5936 9448</span></span>
+                        <span><span class="contact-label" data-i18n="c.phone">Teléfono</span><span class="contact-value">+502 5936 9448</span></span>
                     </a>
                 </li>
 
                 <li>
                     <a class="contact-item" href="mailto:icaleladio@gmail.com">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        <span><span class="contact-label">Correo</span><span class="contact-value">icaleladio@gmail.com</span></span>
+                        <span><span class="contact-label" data-i18n="c.mail">Correo</span><span class="contact-value">icaleladio@gmail.com</span></span>
                     </a>
                 </li>
 
@@ -322,6 +399,24 @@
     <footer>
         <p><strong>Selvin Eladio Lem Ical</strong> © 2026</p>
     </footer>
+
+    <!-- ================= MODAL: VISTA PREVIA DEL CV ================= -->
+    <!-- PLACEHOLDER: ruta del PDF del CV (data-src y los dos href) -->
+    <dialog class="cv-modal" id="cv-modal" aria-labelledby="cv-modal-title">
+        <div class="cv-modal-header">
+            <h3 id="cv-modal-title" data-i18n="cv.title">Currículum de Selvin Eladio Lem Ical</h3>
+            <div class="cv-modal-actions">
+                <a class="btn" id="cv-download" href="./docs/cv.pdf" download="CV-Selvin-Eladio-Lem-Ical.pdf" data-i18n="cv.download">Descargar CV</a>
+                <button class="btn btn-outline" id="cv-close" type="button" data-i18n="cv.close">Cerrar</button>
+            </div>
+        </div>
+        <div class="cv-modal-body">
+            <iframe id="cv-frame" title="Vista previa del CV" data-i18n-attr="title:a.cvprev" data-src="./docs/cv.pdf#view=FitH"></iframe>
+        </div>
+        <p class="cv-modal-fallback"><span data-i18n="cv.fb1">¿No se ve la vista previa?</span> <a id="cv-newtab" href="./docs/cv.pdf" target="_blank" rel="noopener" data-i18n="cv.fb2">Abrir el CV en una pestaña nueva</a>.</p>
+    </dialog>
+
+    <script src="./js/i18n.js"></script>
     <script src="./js/index.js"></script>
 
 </body>
