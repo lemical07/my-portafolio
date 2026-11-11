@@ -38,18 +38,40 @@
         max-width:420px;
     }
 
+    /* Experiencia en una columna */
+    .experience-card{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+
+    .experience-meta{
+        flex-direction:row;
+        flex-wrap:wrap;
+        gap:6px 14px;
+        align-items:baseline;
+    }
+
     /* Menú un poco más compacto */
     .menu{
-        gap:18px;
+        gap:16px;
+    }
+
+    .nav-right{
+        gap:16px;
+    }
+
+    .nav{
+        padding:10px 12px;
     }
 }
 
 
 /* ==========================================================
-   CELULAR (hasta 760px): menú hamburguesa
+   CELULAR (hasta 860px): menú hamburguesa
 ========================================================== */
-@media (max-width:760px){
-        header{
+@media (max-width:860px){
+
+    header{
         top:10px;
         margin-top:10px;
         background:transparent;
@@ -65,6 +87,15 @@
 
     .logo{
         display:none;
+    }
+
+    .nav-right{
+        gap:8px;
+    }
+
+    .theme-toggle,
+    .lang-toggle{
+        pointer-events:auto;
     }
 
     .menu-toggle{
@@ -125,10 +156,12 @@
         padding:11px 20px;
         border-bottom:0;
     }
+
     .about img{
-    width:250px;
-    height:250px;
-}
+        width:250px;
+        height:250px;
+    }
+
     section{
         padding:72px 5%;
     }
@@ -139,6 +172,23 @@
 
     .section-title{
         margin-bottom:32px;
+    }
+
+    .section-note{
+        margin-top:-16px;
+        margin-bottom:28px;
+    }
+
+    .experience-card{
+        padding:20px;
+    }
+
+    /* Modal del CV casi a pantalla completa */
+    .cv-modal{
+        width:100vw;
+        height:100dvh;
+        border-radius:0;
+        border:0;
     }
 }
 
