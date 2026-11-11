@@ -19,6 +19,11 @@ body{
     color:var(--text);
     background:var(--bg);
     overflow-x:clip;
+    transition:background .25s, color .25s;
+}
+
+body.no-scroll{
+    overflow:hidden;
 }
 
 img{
@@ -74,13 +79,19 @@ header{
     object-fit:contain;
 }
 
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:24px;
+}
+
 .menu-toggle{
     display:none;
 }
 
 .menu{
     display:flex;
-    gap:28px;
+    gap:24px;
     list-style:none;
 }
 
@@ -98,6 +109,49 @@ header{
     color:var(--text);
     border-bottom-color:var(--accent);
 }
+
+/* Botón de tema claro / oscuro */
+.theme-toggle,
+.lang-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    flex:none;
+    color:var(--text);
+    background:var(--surface);
+    border:var(--line);
+    border-radius:var(--radius-sm);
+    cursor:pointer;
+    transition:border-color .2s;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover{
+    border-color:var(--accent);
+}
+
+.theme-toggle svg{
+    width:20px;
+    height:20px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.75;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.lang-toggle{
+    font-size:.85rem;
+    font-weight:600;
+    letter-spacing:.02em;
+}
+
+/* En modo oscuro se muestra el sol (para pasar a claro); en claro, la luna */
+.theme-toggle .icon-moon{ display:none; }
+:root[data-theme="light"] .theme-toggle .icon-sun{ display:none; }
+:root[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
 
 
 /* =====================
@@ -120,6 +174,12 @@ section:not(.intro){
     letter-spacing:-.01em;
 }
 
+.section-note{
+    max-width:65ch;
+    margin:-32px 0 40px;
+    color:var(--muted);
+}
+
 
 /* ===============
    BOTONES
@@ -127,6 +187,7 @@ section:not(.intro){
 .btn,
 .button{
     display:inline-block;
+    font-family:inherit;
     font-weight:600;
     text-decoration:none;
     border-radius:var(--radius-sm);
@@ -281,8 +342,7 @@ section:not(.intro){
     display:grid;
     grid-template-columns:360px 1fr;
     align-items:center;
-    justify-content: center;
-
+    justify-content:center;
     gap:48px;
 }
 
@@ -346,11 +406,69 @@ section:not(.intro){
 
 
 /* =================
+   EXPERIENCIA
+=============== */
+.experience-list{
+    display:grid;
+    gap:24px;
+}
+
+.experience-card{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:32px;
+    padding:28px;
+    background:var(--surface);
+    border:var(--line);
+    border-radius:16px;
+}
+
+.experience-meta{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.experience-meta strong{
+    font-weight:600;
+}
+
+.experience-meta span{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.experience-body h3{
+    margin-bottom:4px;
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+.experience-role{
+    margin-bottom:14px;
+    color:var(--accent);
+    font-size:.95rem;
+    font-weight:500;
+}
+
+.experience-body p{
+    max-width:70ch;
+    color:var(--muted);
+}
+
+.experience-body .tags{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:var(--line);
+}
+
+
+/* =================
    PROYECTOS
 =============== */
 .projects-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));
     gap:24px;
 }
 
@@ -360,7 +478,7 @@ section:not(.intro){
     overflow:hidden;
     background:var(--surface);
     border:var(--line);
-    border-radius: 25px;
+    border-radius:25px;
 }
 
 .project-card img{
@@ -368,16 +486,6 @@ section:not(.intro){
     width:100%;
     aspect-ratio:16 / 9;
     object-fit:cover;
-    border-bottom:var(--line);
-}
-
-.project-cover{
-    display:grid;
-    place-items:center;
-    aspect-ratio:16 / 9;
-    color:var(--muted);
-    font-size:.95rem;
-    background:var(--bg);
     border-bottom:var(--line);
 }
 
@@ -475,7 +583,7 @@ section:not(.intro){
 
 
 /* ================
-   TRAYECTORIA
+   EDUCACIÓN
 =============== */
 .timeline{
     margin-left:6px;
@@ -605,6 +713,88 @@ a.contact-item:hover{
 .contact-value{
     font-weight:500;
     overflow-wrap:anywhere;
+}
+
+
+/* ============
+   MODAL CV
+===========*/
+.cv-modal{
+    position:fixed;
+    inset:0;
+    width:min(960px,94vw);
+    height:min(90vh,900px);
+    max-width:none;
+    max-height:none;
+    margin:auto;
+    padding:0;
+    color:var(--text);
+    background:var(--surface);
+    border:var(--line);
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.cv-modal[open]{
+    display:flex;
+    flex-direction:column;
+}
+
+.cv-modal::backdrop{
+    background:var(--overlay);
+    backdrop-filter:blur(3px);
+}
+
+.cv-modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    padding:14px 18px;
+    border-bottom:var(--line);
+}
+
+.cv-modal-header h3{
+    font-size:1.05rem;
+    font-weight:600;
+}
+
+.cv-modal-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.cv-modal-actions .btn,
+.cv-modal-actions .btn-outline{
+    padding:8px 18px;
+    font-size:.9rem;
+}
+
+.cv-modal-body{
+    flex:1;
+    min-height:0;
+    background:var(--bg);
+}
+
+.cv-modal-body iframe{
+    display:block;
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.cv-modal-fallback{
+    padding:12px 18px;
+    color:var(--muted);
+    font-size:.85rem;
+    text-align:center;
+    border-top:var(--line);
+}
+
+.cv-modal-fallback a{
+    color:var(--accent);
 }
 
 
